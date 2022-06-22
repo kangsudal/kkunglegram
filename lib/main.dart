@@ -55,33 +55,78 @@ class ChatList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(itemBuilder: (context, index) {
-      return ListTile(
-        leading: CircleAvatar(),
-        title: Text("대화상대명"),
-        subtitle: Text("최신메세지"),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: const [
-            Text(
-              "최근메세지 날짜or시간",
-              style: TextStyle(
-                // fontSize: 12,
-                color: Colors.grey,
+    return Column(
+      children: [
+        const MenuAndSearch(),
+        Expanded(
+          child: ListView.builder(itemBuilder: (context, index) {
+            return ListTile(
+              leading: CircleAvatar(),
+              title: Text("대화상대명"),
+              subtitle: Text("최신메세지"),
+              trailing: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: const [
+                  Text(
+                    "최근메세지 날짜or시간",
+                    style: TextStyle(
+                      // fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  CircleAvatar(
+                    maxRadius: 10,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text("쌓여있는메세지개수"),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            CircleAvatar(
-              maxRadius: 10,
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text("쌓여있는메세지개수"),
-              ),
-            ),
-          ],
+            );
+          }),
         ),
-      );
-    });
+      ],
+    );
+  }
+}
+
+class MenuAndSearch extends StatelessWidget {
+  const MenuAndSearch({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // color: Colors.yellow,
+      height: 50,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 50,
+            child: IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {
+                print("open drawer");
+              },
+            ),
+          ),
+          const Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter a search term',
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
