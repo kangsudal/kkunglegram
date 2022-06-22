@@ -90,14 +90,19 @@ class ChatListWithRoom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
+    return Row(
       children: [
-        ChatList(),
-        Container(
-          color: Colors.blue,
-          child: Center(child: Text("대화방을 선택해주세요")),
-        )
+        Expanded(
+          child: ChatList(),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.blue,
+            child: Center(
+              child: Text("대화방을 선택해주세요"),
+            ),
+          ),
+        ),
       ],
     );
   }
