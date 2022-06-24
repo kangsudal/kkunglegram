@@ -62,16 +62,16 @@ class ChatList extends StatelessWidget {
           child: ListView.builder(itemBuilder: (context, index) {
             return ListTile(
               leading: CircleAvatar(),
-              title: Text("대화상대명"),
-              subtitle: Text("최신메세지"),
+              title: Text("대화상대명",style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold),),
+              subtitle: Text("최신메세지",style: TextStyle(fontSize: 13),),
               trailing: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: const [
                   Text(
-                    "최근메세지 날짜or시간",
+                    "최근시간",
                     style: TextStyle(
-                      // fontSize: 12,
+                      fontSize: 12,
                       color: Colors.grey,
                     ),
                   ),
@@ -113,13 +113,21 @@ class MenuAndSearch extends StatelessWidget {
               },
             ),
           ),
-          const Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter a search term',
+          Expanded(
+            child: Container(
+              alignment: Alignment.center,
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.amber,),
+                    ),
+                    hintText: 'Search',
+                  ),
                 ),
               ),
             ),
@@ -138,11 +146,13 @@ class ChatListWithRoom extends StatelessWidget {
     return Row(
       children: [
         Expanded(
+          flex: 2,
           child: ChatList(),
         ),
         Expanded(
+          flex: 5,
           child: Container(
-            color: Colors.blue,
+            color: Colors.lightGreen,
             child: Center(
               child: Text("대화방을 선택해주세요"),
             ),
