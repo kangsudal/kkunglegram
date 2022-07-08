@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:kkunglegram/commonLayout/chatList.dart';
 
-class ChatListDesktop extends StatelessWidget {
-  const ChatListDesktop({Key? key}) : super(key: key);
+class ChatListDesktopWide extends StatelessWidget {
+  const ChatListDesktopWide({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           flex: 2,
           child: ChatList(),
         ),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ChatList extends StatelessWidget {
-  const ChatList({Key? key}) : super(key: key);
+  ChatList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var amountOfchantRoom = 30; //todo: 진짜 방 개수로 바꿔주기
     return Column(
       children: [
-        const MenuAndSearch(),
+        MenuAndSearch(),
         Expanded(
           child: ListView.builder(
             itemBuilder: itemBuilder,
@@ -19,43 +19,49 @@ class ChatList extends StatelessWidget {
     );
   }
 
+  int _selectedIndex = 0;
   Widget itemBuilder(context, index) {
-    return ListTile(
-      leading: CircleAvatar(),
-      title: Text(
-        "대화상대명",
-        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-      ),
-      subtitle: Text(
-        "최신메세지",
-        style: TextStyle(fontSize: 13),
-      ),
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: const [
-          Text(
-            "최근시간",
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey,
+    return GestureDetector(
+      onTap: () {
+        _selectedIndex = index;
+      },
+      child: ListTile(
+        leading: CircleAvatar(),
+        title: Text(
+          "대화상대명",
+          style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(
+          "최신메세지",
+          style: TextStyle(fontSize: 13),
+        ),
+        trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: const [
+            Text(
+              "최근시간",
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey,
+              ),
             ),
-          ),
-          CircleAvatar(
-            maxRadius: 10,
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text("쌓여있는메세지개수"),
+            CircleAvatar(
+              maxRadius: 10,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text("쌓여있는메세지개수"),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
 
 class MenuAndSearch extends StatelessWidget {
-  const MenuAndSearch({
+  MenuAndSearch({
     Key? key,
   }) : super(key: key);
 
