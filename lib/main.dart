@@ -46,45 +46,51 @@ class ChatList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var amountOfchantRoom = 30; //todo: 진짜 방 개수로 바꿔주기
     return Column(
       children: [
         const MenuAndSearch(),
         Expanded(
-          child: ListView.builder(itemBuilder: (context, index) {
-            return ListTile(
-              leading: CircleAvatar(),
-              title: Text(
-                "대화상대명",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text(
-                "최신메세지",
-                style: TextStyle(fontSize: 13),
-              ),
-              trailing: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: const [
-                  Text(
-                    "최근시간",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  CircleAvatar(
-                    maxRadius: 10,
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text("쌓여있는메세지개수"),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }),
+          child: ListView.builder(
+            itemBuilder: itemBuilder,
+            itemCount: amountOfchantRoom = 30,
+          ),
         ),
       ],
+    );
+  }
+
+  Widget itemBuilder(context, index) {
+    return ListTile(
+      leading: CircleAvatar(),
+      title: Text(
+        "대화상대명",
+        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+      ),
+      subtitle: Text(
+        "최신메세지",
+        style: TextStyle(fontSize: 13),
+      ),
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: const [
+          Text(
+            "최근시간",
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey,
+            ),
+          ),
+          CircleAvatar(
+            maxRadius: 10,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text("쌓여있는메세지개수"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -161,7 +167,7 @@ class ChatListWithRoom extends StatelessWidget {
             ),
             child: Center(
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 5,horizontal: 12),
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 12),
                 child: const Text(
                   "대화할 방을 선택하세요.",
                   style: TextStyle(
