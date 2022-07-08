@@ -5,14 +5,14 @@ class ChatList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var amountOfchantRoom = 30; //todo: 진짜 방 개수로 바꿔주기
+    var amountOfChatRoom = 30; //todo: 진짜 방 개수로 바꿔주기
     return Column(
       children: [
         MenuAndSearch(),
         Expanded(
           child: ListView.builder(
             itemBuilder: itemBuilder,
-            itemCount: amountOfchantRoom = 30,
+            itemCount: amountOfChatRoom,
           ),
         ),
       ],
