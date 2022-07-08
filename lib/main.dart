@@ -11,18 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Kkunglegram',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.grey,
       ),
       home: InitScreen(),
     );
@@ -62,8 +53,14 @@ class ChatList extends StatelessWidget {
           child: ListView.builder(itemBuilder: (context, index) {
             return ListTile(
               leading: CircleAvatar(),
-              title: Text("대화상대명",style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold),),
-              subtitle: Text("최신메세지",style: TextStyle(fontSize: 13),),
+              title: Text(
+                "대화상대명",
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                "최신메세지",
+                style: TextStyle(fontSize: 13),
+              ),
               trailing: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -107,7 +104,10 @@ class MenuAndSearch extends StatelessWidget {
           SizedBox(
             width: 50,
             child: IconButton(
-              icon: Icon(Icons.menu),
+              icon: Icon(
+                Icons.menu,
+                color: Colors.grey.shade400,
+              ),
               onPressed: () {
                 print("open drawer");
               },
@@ -120,11 +120,12 @@ class MenuAndSearch extends StatelessWidget {
                 padding: EdgeInsets.all(8.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-
-                    ),
+                    border: OutlineInputBorder(),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.amber,),
+                      borderSide: BorderSide(
+                        color: Colors.lightBlue,
+                        width: 1.3,
+                      ),
                     ),
                     hintText: 'Search',
                   ),
@@ -145,16 +146,36 @@ class ChatListWithRoom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
+        const Expanded(
           flex: 2,
           child: ChatList(),
         ),
         Expanded(
           flex: 5,
           child: Container(
-            color: Colors.lightGreen,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/pandas_1280.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
             child: Center(
-              child: Text("대화방을 선택해주세요"),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 5,horizontal: 12),
+                child: const Text(
+                  "대화할 방을 선택하세요.",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 13,
+                  ),
+                ),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  color: Color(0x6A000000),
+                ),
+              ),
             ),
           ),
         ),
