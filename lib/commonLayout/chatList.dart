@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kkunglegram/desktop/wide/provider/widgetIdxProvider.dart';
 
 class ChatList extends StatelessWidget {
   ChatList({Key? key}) : super(key: key);
@@ -19,14 +20,12 @@ class ChatList extends StatelessWidget {
     );
   }
 
-  int _selectedIndex = -1;
-
   Widget itemBuilder(context, index) {
     return Ink(
       height: 70.0,
       child: InkWell(
         onTap: () {
-          _selectedIndex = index;
+          // helloWorldProvider = index; //todo: modify 가능한 provider로 바꾸기
         },
         child: Row(
           children: [

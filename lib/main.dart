@@ -1,12 +1,15 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kkunglegram/desktop/layoutBuilderDesktop.dart';
 import 'desktop/wide/chatListDesktopWide.dart';
 import 'desktop/narrow/chatListDesktopNarrow.dart';
 
+final helloWorldProvider = Provider((_) => -1);
+
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -39,8 +42,7 @@ class InitScreen extends StatelessWidget {
       return SafeArea(
         child: Scaffold(
           body: Container(
-            child: Text(
-                "android LayoutBuilder or just making scaffold detail"),
+            child: Text("android LayoutBuilder or just making scaffold detail"),
           ),
         ),
       );
