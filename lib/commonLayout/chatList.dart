@@ -20,40 +20,94 @@ class ChatList extends StatelessWidget {
   }
 
   int _selectedIndex = 0;
+
   Widget itemBuilder(context, index) {
     return GestureDetector(
       onTap: () {
         _selectedIndex = index;
       },
-      child: ListTile(
-        leading: CircleAvatar(),
-        title: Text(
-          "대화상대명",
-          style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-        ),
-        subtitle: Text(
-          "최신메세지",
-          style: TextStyle(fontSize: 13),
-        ),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: const [
-            Text(
-              "최근시간",
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
+      child: Ink(
+        height: 70.0,
+        child: InkWell(
+          onTap: () {},
+          child: Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.blue,
+                  ),
+                ),
               ),
-            ),
-            CircleAvatar(
-              maxRadius: 10,
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text("쌓여있는메세지개수"),
+              Expanded(
+                flex: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "대화상대",
+                          maxLines: 1,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          "최근 메세지",
+                          maxLines: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "시간",
+                          maxLines: 1,
+                        ),
+                      ),
+                      Expanded(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 1,
+                              horizontal: 6,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              color: Colors.grey.shade400,
+                            ),
+                            child: Center(
+                                child: Text(
+                              5.toString(),//todo: 진짜값으로 바꾸기
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 13),
+                            )),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
