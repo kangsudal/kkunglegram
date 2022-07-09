@@ -27,8 +27,8 @@ class ChatList extends ConsumerWidget {
       child: InkWell(
         onTap: () {
           //선택한 채팅방의 index값을 state에 저장해준다.
-          ref.read(helloWorldProvider.notifier).updateIdx(index);
-          debugPrint(ref.watch(helloWorldProvider).toString());
+          ref.read(chatRoomIdxProvider.notifier).updateIdx(index);
+          debugPrint(ref.watch(chatRoomIdxProvider).toString());
         },
         child: Row(
           children: [

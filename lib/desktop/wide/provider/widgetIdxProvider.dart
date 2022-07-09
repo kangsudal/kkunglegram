@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final helloWorldProvider =
-    StateNotifierProvider<HelloWorldNotifier, int>((ref) {
-  return HelloWorldNotifier();
+final chatRoomIdxProvider =
+    StateNotifierProvider<ChatRoomIndex, int>((ref) {
+  return ChatRoomIndex();
 });
 
-class HelloWorldNotifier extends StateNotifier<int> {
-  HelloWorldNotifier() : super(-1);
+class ChatRoomIndex extends StateNotifier<int> {
+  ChatRoomIndex() : super(-1);
 
   void updateIdx(int index) {
     state = index;

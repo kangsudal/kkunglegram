@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kkunglegram/desktop/layoutBuilderDesktop.dart';
 
-final helloWorldProvider = Provider((_) => -1);
+final chatRoomIdxProvider = Provider((_) => -1);
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
