@@ -44,6 +44,7 @@ class ChatRoom extends ConsumerWidget {
           Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
+              elevation: 1,
               backgroundColor: const Color(0xFFFFFFFF),
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +105,7 @@ class ChatRoom extends ConsumerWidget {
       IconButton(
         onPressed: () {},
         icon: const Icon(
-          Icons.speaker_notes_rounded,
+          Icons.call,
           color: Colors.grey,
         ),
       ),
