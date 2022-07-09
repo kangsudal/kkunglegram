@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kkunglegram/commonLayout/chatList.dart';
-import 'package:kkunglegram/desktop/wide/provider/widgetIdxProvider.dart';
 
 class ChatListDesktopWide extends StatelessWidget {
   const ChatListDesktopWide({Key? key}) : super(key: key);
@@ -10,7 +9,7 @@ class ChatListDesktopWide extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
+        const Expanded(
           flex: 2,
           child: ChatList(),
         ),
@@ -23,7 +22,7 @@ class ChatListDesktopWide extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            child: Center(
+            child: const Center(
               child: ChatRoom(),
             ),
           ),
@@ -41,7 +40,7 @@ class ChatRoom extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
       child: const Text(
         "대화할 방을 선택하세요.",
         style: TextStyle(

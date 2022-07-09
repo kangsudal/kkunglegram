@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../commonLayout/chatList.dart';
 
 class ChatListMobile extends StatelessWidget {
@@ -7,6 +6,6 @@ class ChatListMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChatList();
+    return const ChatList();
   }
 }

@@ -3,13 +3,11 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kkunglegram/desktop/layoutBuilderDesktop.dart';
-import 'desktop/wide/chatListDesktopWide.dart';
-import 'desktop/narrow/chatListDesktopNarrow.dart';
 
 final helloWorldProvider = Provider((_) => -1);
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: InitScreen(),
+      home: const InitScreen(),
     );
   }
 }
@@ -35,48 +33,28 @@ class InitScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // String os = Platform.operatingSystem;
     if (kIsWeb) {
-      return LayoutBuilderDesktop();
+      return const LayoutBuilderDesktop();
     } else if (Platform.isWindows) {
-      return LayoutBuilderDesktop();
+      return const LayoutBuilderDesktop();
     } else if (Platform.isAndroid) {
-      return SafeArea(
+      return const SafeArea(
         child: Scaffold(
-          body: Container(
-            child: Text("android LayoutBuilder or just making scaffold detail"),
-          ),
+          body: Text("android LayoutBuilder or just making scaffold detail"),
         ),
       );
     } //todo:android version 만들기
     else {
-      return SafeArea(
+      return const SafeArea(
         child: Scaffold(
-          body: Container(
-            child: Text('''Sorry for
-              Platform.isFuchsia
-              Platform.isIOS
-              Platform.isLinux
-              Platform.isMacOS.
-              I didn't make your version and test yet.
-              '''),
-          ),
+          body: Text('''Sorry for
+            Platform.isFuchsia
+            Platform.isIOS
+            Platform.isLinux
+            Platform.isMacOS.
+            I didn't make your version and test yet.
+            '''),
         ),
       );
     }
-    return Container(
-      child: Text("Sorry!"),
-    );
-    // return LayoutBuilder(
-    //   builder: (BuildContext context, BoxConstraints constraints) {
-    //     final width = constraints.maxWidth;
-    //     final height = constraints.maxHeight;
-    //     final ratio = width / height;
-    //     print(
-    //       "width: $width\nheight: $height\naspect ratio: $ratio",
-    //     );
-    //     return Scaffold(
-    //       body: ratio >= 1 ? const ChatListDesktopWide() : const ChatListMobile(),
-    //     );
-    //   },
-    // );
   }
 }

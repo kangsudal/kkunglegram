@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kkunglegram/desktop/wide/provider/widgetIdxProvider.dart';
 
 class ChatList extends ConsumerWidget {
-  ChatList({Key? key}) : super(key: key);
+  const ChatList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var amountOfChatRoom = 30; //todo: 진짜 방 개수로 바꿔주기
     return Column(
       children: [
-        MenuAndSearch(),
+        const MenuAndSearch(),
         Expanded(
           child: ListView.builder(
             itemBuilder: (context, index) => itemBuilder(context, index, ref),
@@ -28,14 +28,14 @@ class ChatList extends ConsumerWidget {
         onTap: () {
           // helloWorldProvider = index; //todo: modify 가능한 provider로 바꾸기
           ref.read(helloWorldProvider.notifier).updateIdx(index);
-          print(ref.watch(helloWorldProvider));
+          debugPrint(ref.watch(helloWorldProvider));
         },
         child: Row(
           children: [
-            Expanded(
+            const Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: EdgeInsets.only(left: 8.0),
                 child: CircleAvatar(
                   backgroundColor: Colors.blue,
                 ),
@@ -48,7 +48,7 @@ class ChatList extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
+                  children: const [
                     Expanded(
                       child: Text(
                         "대화상대",
@@ -73,7 +73,7 @@ class ChatList extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Text(
                         "시간",
                         maxLines: 1,
@@ -83,12 +83,12 @@ class ChatList extends ConsumerWidget {
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: 1,
                             horizontal: 6,
                           ),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(20),
                             ),
                             color: Colors.grey.shade400,
@@ -96,7 +96,8 @@ class ChatList extends ConsumerWidget {
                           child: Center(
                               child: Text(
                             5.toString(), //todo: 진짜값으로 바꾸기
-                            style: TextStyle(color: Colors.white, fontSize: 13),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 13),
                           )),
                         ),
                       ),
@@ -113,13 +114,13 @@ class ChatList extends ConsumerWidget {
 }
 
 class MenuAndSearch extends StatelessWidget {
-  MenuAndSearch({
+  const MenuAndSearch({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       // color: Colors.yellow,
       height: 50,
       child: Row(
@@ -132,7 +133,7 @@ class MenuAndSearch extends StatelessWidget {
                 color: Colors.grey.shade400,
               ),
               onPressed: () {
-                print("open drawer");
+                debugPrint("open drawer");
               },
             ),
           ),

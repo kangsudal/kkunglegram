@@ -12,11 +12,12 @@ class LayoutBuilderDesktop extends StatelessWidget {
         final width = constraints.maxWidth;
         final height = constraints.maxHeight;
         final ratio = width / height;
-        print(
+        debugPrint(
           "width: $width\nheight: $height\naspect ratio: $ratio",
         );
         return Scaffold(
-          body: ratio >= 1 ? const ChatListDesktopWide() : const ChatListMobile(),
+          body:
+              ratio >= 1 ? const ChatListDesktopWide() : const ChatListMobile(),
         );
       },
     );
