@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kkunglegram/desktop/wide/provider/widgetIdxProvider.dart';
 
-class ChatList extends StatelessWidget {
+class ChatList extends ConsumerWidget {
   ChatList({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     var amountOfChatRoom = 30; //todo: 진짜 방 개수로 바꿔주기
     return Column(
       children: [
         MenuAndSearch(),
         Expanded(
           child: ListView.builder(
-            itemBuilder: itemBuilder,
+            itemBuilder: (context, index) => itemBuilder(context, index, ref),
             itemCount: amountOfChatRoom,
           ),
         ),
@@ -20,12 +21,14 @@ class ChatList extends StatelessWidget {
     );
   }
 
-  Widget itemBuilder(context, index) {
+  Widget itemBuilder(context, index, ref) {
     return Ink(
       height: 70.0,
       child: InkWell(
         onTap: () {
           // helloWorldProvider = index; //todo: modify 가능한 provider로 바꾸기
+          ref.read(helloWorldProvider.notifier).updateIdx(index);
+          print(ref.watch(helloWorldProvider));
         },
         child: Row(
           children: [
@@ -92,9 +95,8 @@ class ChatList extends StatelessWidget {
                           ),
                           child: Center(
                               child: Text(
-                            5.toString(),//todo: 진짜값으로 바꾸기
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 13),
+                            5.toString(), //todo: 진짜값으로 바꾸기
+                            style: TextStyle(color: Colors.white, fontSize: 13),
                           )),
                         ),
                       ),

@@ -40,35 +40,21 @@ class ChatRoom extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int value = ref.watch(helloWorldProvider);
-
-    if (value >= 0) {
-      return IndexedStack(
-        index: value,
-        children: List.generate(
-          30,
-          (index) => Container(
-            child: Text(index.toString()),
-          ),
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+      child: const Text(
+        "대화할 방을 선택하세요.",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 13,
         ),
-      );
-    } else {
-      return Container(
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 12),
-        child: const Text(
-          "대화할 방을 선택하세요.",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 13,
-          ),
+      ),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular(20),
         ),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-          color: Color(0x6A000000),
-        ),
-      );
-    }
+        color: Color(0x6A000000),
+      ),
+    );
   }
 }
