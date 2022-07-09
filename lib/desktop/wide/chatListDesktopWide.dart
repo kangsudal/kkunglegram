@@ -33,24 +33,35 @@ class ChatRoom extends ConsumerWidget {
     int chatRoomIdx = ref.watch(chatRoomIdxProvider);
 
     if (chatRoomIdx >= 0) {
-      return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(0xFFFFFFFF),
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text("대화상대"),
-              Text(
-                "최근 접속 시간/참여자 몇명",
-                style: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-            ],
+      return Stack(
+        children: [
+          Image.asset(
+            "assets/images/pandas_1280.jpg",
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            fit: BoxFit.cover,
           ),
-          actions: actions(),
-        ),
-        body: Text("Room $chatRoomIdx"),
+          Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              backgroundColor: const Color(0xFFFFFFFF),
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text("대화상대"),
+                  Text(
+                    "최근 접속 시간/참여자 몇명",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+              actions: actions(),
+            ),
+            body: Text("Room $chatRoomIdx"),
+          ),
+        ],
       );
     } else {
       return Container(
@@ -61,55 +72,53 @@ class ChatRoom extends ConsumerWidget {
           ),
         ),
         child: Center(
-            child:
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
-              child: const Text(
-                "대화할 방을 선택하세요.",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 13,
-                ),
-              ),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20),
-                ),
-                color: Color(0x6A000000),
-              ),
-            )
-        ),
+            child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+          child: const Text(
+            "대화할 방을 선택하세요.",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 13,
+            ),
+          ),
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+            color: Color(0x6A000000),
+          ),
+        )),
       );
     }
   }
 
   List<Widget> actions() {
     return [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.search,
-              color: Colors.grey,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.speaker_notes_rounded,
-              color: Colors.grey,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.menu_open,
-              color: Colors.grey,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.more_vert),
-          ),
-        ];
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.search,
+          color: Colors.grey,
+        ),
+      ),
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.speaker_notes_rounded,
+          color: Colors.grey,
+        ),
+      ),
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.menu_open,
+          color: Colors.grey,
+        ),
+      ),
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(Icons.more_vert),
+      ),
+    ];
   }
 }
