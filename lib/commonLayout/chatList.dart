@@ -26,9 +26,9 @@ class ChatList extends ConsumerWidget {
       height: 70.0,
       child: InkWell(
         onTap: () {
-          // helloWorldProvider = index; //todo: modify 가능한 provider로 바꾸기
+          //선택한 채팅방의 index값을 state에 저장해준다.
           ref.read(helloWorldProvider.notifier).updateIdx(index);
-          debugPrint(ref.watch(helloWorldProvider));
+          debugPrint(ref.watch(helloWorldProvider).toString());
         },
         child: Row(
           children: [
