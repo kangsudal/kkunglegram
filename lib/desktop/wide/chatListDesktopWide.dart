@@ -11,11 +11,11 @@ class ChatListDesktopWide extends StatelessWidget {
     return Row(
       children: const [
         Expanded(
-          flex: 2,
+          flex: 1,
           child: ChatList(),
         ),
         Expanded(
-          flex: 5,
+          flex: 1,
           child: ChatRoom(),
         ),
       ],
