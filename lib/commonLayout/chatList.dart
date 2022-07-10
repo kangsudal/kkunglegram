@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kkunglegram/desktop/wide/provider/widgetIdxProvider.dart';
@@ -32,13 +33,21 @@ class ChatList extends ConsumerWidget {
         },
         child: Row(
           children: [
-            const Expanded(
-              flex: 1,
-              child: Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: CircleAvatar(
-                  backgroundColor: Colors.blue,
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: CachedNetworkImage(
+                imageUrl: 'https://picsum.photos/id/$index/200',
+                imageBuilder: (context, imageProvider) => Container(
+                  width: 50.0,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: imageProvider, fit: BoxFit.cover),
+                  ),
                 ),
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
             Expanded(
